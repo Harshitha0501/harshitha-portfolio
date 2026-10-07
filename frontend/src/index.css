@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 4%;
+  --foreground: 210 40% 96%;
+  --card: 221 34% 9%;
+  --card-foreground: 210 40% 96%;
+  --popover: 221 34% 9%;
+  --popover-foreground: 210 40% 96%;
+  --primary: 160 84% 39%;
+  --primary-foreground: 160 90% 5%;
+  --secondary: 221 30% 14%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 221 30% 14%;
+  --muted-foreground: 215 20% 60%;
+  --accent: 221 30% 14%;
+  --accent-foreground: 210 40% 96%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 220 25% 15%;
+  --input: 220 25% 15%;
+  --ring: 160 84% 39%;
+  --radius: 0.75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  background-color: #07090e;
+  color: #e2e8f0;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.3);
+  color: #f8fafc;
+}
+
+:focus-visible:not(input):not(textarea) {
+  outline: 2px solid rgba(16, 185, 129, 0.55);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.13) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .grain::after {
+    display: none;
+  }
+  .animate-ping,
+  .animate-pulse,
+  .animate-bounce {
+    animation: none;
+  }
+}
