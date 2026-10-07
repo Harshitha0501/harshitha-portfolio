@@ -167,6 +167,7 @@ def _send_mail(
         headers={
             "Authorization": f"Bearer {RESEND_API_KEY}",
             "Content-Type": "application/json",
+            "User-Agent": "Harshitha-Portfolio/1.0",
         },
         method="POST",
     )
@@ -180,10 +181,16 @@ def _send_mail(
                     f"Resend returned HTTP {response.status}: {response_body}"
                 )
 
-            logger.info("Resend email accepted: %s", response_body)
+            logger.info(
+                "Resend email accepted: %s",
+                response_body,
+            )
 
     except urllib.error.HTTPError as exc:
-        error_body = exc.read().decode("utf-8", errors="replace")
+        error_body = exc.read().decode(
+            "utf-8",
+            errors="replace",
+        )
 
         logger.error(
             "Resend API error: HTTP %s - %s",
